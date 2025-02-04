@@ -273,7 +273,6 @@ class GaussianDiffusion:
         """
         if model_kwargs is None:
             model_kwargs = {}
-
         B, F, C = x.shape[:3]
         assert t.shape == (B,)
         model_output = model(x, t, **model_kwargs)

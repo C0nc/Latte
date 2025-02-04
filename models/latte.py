@@ -13,7 +13,7 @@ import torch.nn as nn
 import numpy as np
 
 from einops import rearrange, repeat
-from timm.models.vision_transformer import Mlp, PatchEmbed
+from timm.models.vision_transformer import Mlp, transformerbed
 
 # the xformers lib allows less memory, faster training and inference
 try:
@@ -230,7 +230,7 @@ class Latte(nn.Module):
         self.extras = extras
         self.num_frames = num_frames
 
-        self.x_embedder = PatchEmbed(input_size, patch_size, in_channels, hidden_size, bias=True)
+        self.x_embedder = transformerbed(input_size, patch_size, in_channels, hidden_size, bias=True)
         self.t_embedder = TimestepEmbedder(hidden_size)
 
         if self.extras == 2:
